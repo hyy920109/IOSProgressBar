@@ -9,7 +9,6 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.toColorInt
 import androidx.core.view.GestureDetectorCompat
-import com.hyy.iosprogressbar_demo.R
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
