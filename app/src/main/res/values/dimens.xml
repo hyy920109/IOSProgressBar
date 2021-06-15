@@ -1,5 +1,3 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="default_conner_radius">8dp</dimen>
-    <dimen name="default_divider_height">.5dp</dimen>
 </resources>

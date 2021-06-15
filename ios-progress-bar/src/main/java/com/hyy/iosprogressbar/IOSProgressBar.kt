@@ -9,6 +9,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.toColorInt
 import androidx.core.view.GestureDetectorCompat
+import com.hyy.iosprogressbar_demo.R
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
@@ -190,7 +191,7 @@ class IOSProgressBar constructor(context: Context, attributeSet: AttributeSet?) 
 				 100
 			)
 			minProgress = getInteger(
-				 R.styleable.IOSProgressBar_ipb_progress_min,
+				R.styleable.IOSProgressBar_ipb_progress_min,
 				0
 			)
 			//xml progress
@@ -198,7 +199,9 @@ class IOSProgressBar constructor(context: Context, attributeSet: AttributeSet?) 
 
 
 			showProgressDivider = getBoolean(R.styleable.IOSProgressBar_ipb_progress_show_divider, false)
-			dividerHeight = getDimension(R.styleable.IOSProgressBar_ipb_progress_divider_height, resources.getDimension(R.dimen.default_divider_height))
+			dividerHeight = getDimension(
+				R.styleable.IOSProgressBar_ipb_progress_divider_height, resources.getDimension(
+					R.dimen.default_divider_height))
 			dividerPaint.strokeWidth = dividerHeight
 
 			val dividerColor = getColor(

@@ -1,4 +1,4 @@
-package com.hyy.iosprogressbar
+package com.hyy.iosprogressbar_demo
 
 import org.junit.Test
 
