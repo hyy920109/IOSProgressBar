@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IOSProgressBar">
+        <attr name="ipb_conner_radius" format="dimension"/>
+        <attr name="ipb_background_color" format="color"/>
+        <attr name="ipb_progress_color" format="color"/>
+        <attr name="ipb_progress_max" format="integer"/>
+        <attr name="ipb_progress_min" format="integer"/>
+        <attr name="ipb_progress" format="integer"/>
+        <attr name="ipb_progress_show_divider" format="boolean"/>
+        <attr name="ipb_progress_divider_height" format="dimension"/>
+        <attr name="ipb_progress_divider_color" format="color"/>
+
+        <attr name="ipb_progress_bar_orientation" format="enum">
+            <enum name="vertical" value="1" />
+            <enum name="horizontal" value="2"/>
+        </attr>
+
+        <attr name="ipb_progress_conner_style" format="enum">
+            <enum name="round" value="1"/>
+            <enum name="cut" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>
