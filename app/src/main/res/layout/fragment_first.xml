@@ -12,6 +12,7 @@
         android:layout_height="56dp"
         app:ipb_conner_radius="8dp"
         app:ipb_progress_show_text="true"
+        app:ipb_progress_conner_style="cut"
         app:ipb_progress_bar_orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
