@@ -81,6 +81,8 @@ class IOSProgressBar constructor(context: Context, attributeSet: AttributeSet?) 
 	//show Progress divider or not
 	private var showProgressDivider = false
 
+	private var connerStyle = CONNER_STYLE_ROUND
+
 	private var dividerHeight = 0f
 
 	//progress orientation
@@ -238,6 +240,11 @@ class IOSProgressBar constructor(context: Context, attributeSet: AttributeSet?) 
 				resources.getDimension(R.dimen.default_progress_text_size)
 			)
 			progressTextPaint.textSize = progressTextSize
+
+			connerStyle = getInteger(
+				R.styleable.IOSProgressBar_ipb_progress_conner_style,
+				CONNER_STYLE_ROUND
+			)
 		}
 
 		typedArray.recycle()
@@ -311,28 +318,28 @@ class IOSProgressBar constructor(context: Context, attributeSet: AttributeSet?) 
 		viewBackgroundPath.reset()
 		viewBackgroundPath.moveTo(left, top + connerRadius)
 		//add left top conner
-		if (connerRadius > 0) {
+		if (connerRadius > 0 && connerStyle == CONNER_STYLE_ROUND) {
 			connerRect.set(left, top, connerRadius*2, connerRadius*2)
 			viewBackgroundPath.arcTo(connerRect, -180f, 90f,false)
 		}
 		viewBackgroundPath.lineTo(left + connerRadius, top)
 		viewBackgroundPath.lineTo(right - connerRadius, top)
 		//add right top conner
-		if (connerRadius > 0) {
+		if (connerRadius > 0 && connerStyle == CONNER_STYLE_ROUND) {
 			connerRect.set(right-connerRadius*2, top, right, connerRadius*2)
 			viewBackgroundPath.arcTo(connerRect, -90f, 90f, false)
 		}
 		viewBackgroundPath.lineTo(right, top + connerRadius)
 		viewBackgroundPath.lineTo(right, bottom - connerRadius)
 		//add right bottom conner
-		if (connerRadius > 0) {
+		if (connerRadius > 0 && connerStyle == CONNER_STYLE_ROUND) {
 			connerRect.set(right-connerRadius*2, bottom-connerRadius*2, right, bottom)
 			viewBackgroundPath.arcTo(connerRect, 0f, 90f, false)
 		}
 		viewBackgroundPath.lineTo(right - connerRadius, bottom)
 		viewBackgroundPath.lineTo(left + connerRadius, bottom)
 		//add left bottom conner
-		if (connerRadius > 0) {
+		if (connerRadius > 0 && connerStyle == CONNER_STYLE_ROUND) {
 			connerRect.set(left, bottom-connerRadius*2, connerRadius*2, bottom)
 			viewBackgroundPath.arcTo(connerRect, 90f, 90f, false)
 		}
@@ -403,6 +410,8 @@ class IOSProgressBar constructor(context: Context, attributeSet: AttributeSet?) 
 		const val TAG = "IOSProgressBar"
 		const val ORIENTATION_VERTICAL = 1
 		const val ORIENTATION_HORIZONTAL = 2
+		const val CONNER_STYLE_ROUND = 1
+		const val CONNER_STYLE_CUT = 2
 	}
 
 }
