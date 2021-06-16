@@ -10,23 +10,44 @@
         android:id="@+id/ios_progress_bar_horizontal"
         android:layout_width="164dp"
         android:layout_height="56dp"
-        app:ipb_conner_radius="12dp"
+        app:ipb_conner_radius="8dp"
+        app:ipb_progress_show_text="true"
         app:ipb_progress_bar_orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/fab_margin"/>
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fab_margin"
+        app:layout_constraintTop_toBottomOf="@+id/ios_progress_bar_horizontal"
+        app:layout_constraintStart_toStartOf="@+id/ios_progress_bar_horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/ios_progress_bar_horizontal" />
+
     <com.hyy.iosprogressbar.IOSProgressBar
         android:id="@+id/ios_progress_bar_vertical"
         android:layout_width="56dp"
         android:layout_height="164dp"
-        app:ipb_conner_radius="12dp"
+        app:ipb_conner_radius="8dp"
         app:ipb_progress_max="4"
         app:ipb_progress_show_divider="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I'm HYY"
+        android:textSize="12sp"
+        android:layout_marginStart="@dimen/fab_margin"
+        app:layout_constraintStart_toEndOf="@+id/ios_progress_bar_vertical"
+        app:layout_constraintTop_toTopOf="@+id/ios_progress_bar_vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/ios_progress_bar_vertical"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

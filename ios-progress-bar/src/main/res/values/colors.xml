@@ -2,4 +2,5 @@
 <resources>
     <color name="default_background_color">#C0C0C0</color>
     <color name="default_progress_color">#00796B</color>
+    <color name="default_progress_text_color">#FF5722</color>
 </resources>

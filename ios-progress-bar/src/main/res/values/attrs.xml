@@ -10,7 +10,9 @@
         <attr name="ipb_progress_show_divider" format="boolean"/>
         <attr name="ipb_progress_divider_height" format="dimension"/>
         <attr name="ipb_progress_divider_color" format="color"/>
-
+        <attr name="ipb_progress_show_text" format="boolean"/>
+        <attr name="ipb_progress_text_color" format="color"/>
+        <attr name="ipb_progress_text_size" format="dimension"/>
         <attr name="ipb_progress_bar_orientation" format="enum">
             <enum name="vertical" value="1" />
             <enum name="horizontal" value="2"/>

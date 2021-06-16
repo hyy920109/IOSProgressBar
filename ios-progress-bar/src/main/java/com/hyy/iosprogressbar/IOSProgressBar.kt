@@ -20,6 +20,7 @@ typealias OnProgressChangedListener = (iosProgressBar: IOSProgressBar, progress:
 
 class IOSProgressBar constructor(context: Context, attributeSet: AttributeSet?) :
 	View(context, attributeSet) {
+
 	//progress listener
 	private var onProgressChangedListener: OnProgressChangedListener? = null
 
@@ -28,6 +29,7 @@ class IOSProgressBar constructor(context: Context, attributeSet: AttributeSet?) 
 	
 	private var progressRect = RectF()
 	private var backgroundRect = Rect()
+	private var progressTextBoundRect = Rect()
 	private var viewBackgroundPath = Path()
 	
 	//progress conner round radius
@@ -38,17 +40,26 @@ class IOSProgressBar constructor(context: Context, attributeSet: AttributeSet?) 
 	private var progressColor = "#FF018786".toColorInt()
 	//define conner rect
 	private var connerRect = RectF()
+	//show progress text or not
+	private var showProgressText: Boolean
 
 	//define paints
 	private val progressPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-		style = Paint.Style.FILL
-	}
-	private val backgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-		style = Paint.Style.FILL
-	}
-	private val dividerPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-		style = Paint.Style.STROKE
-	}
+			style = Paint.Style.FILL
+		}
+
+	private val backgroundPaint =
+		Paint(Paint.ANTI_ALIAS_FLAG).apply {
+			style = Paint.Style.FILL
+		}
+
+	private val dividerPaint =
+		Paint(Paint.ANTI_ALIAS_FLAG).apply {
+			style = Paint.Style.STROKE
+		}
+
+	private val progressTextPaint =
+		Paint(Paint.ANTI_ALIAS_FLAG)
 
 	//some progress variable
 	private var maxProgress = 100
@@ -210,6 +221,23 @@ class IOSProgressBar constructor(context: Context, attributeSet: AttributeSet?) 
 			dividerPaint.color = dividerColor
 
 			orientation = getInteger(R.styleable.IOSProgressBar_ipb_progress_bar_orientation, ORIENTATION_VERTICAL)
+
+			//progress text
+			showProgressText = getBoolean(
+				R.styleable.IOSProgressBar_ipb_progress_show_text,
+				false
+			)
+			val progressTextColor = getColor(
+				R.styleable.IOSProgressBar_ipb_progress_text_color,
+				ContextCompat.getColor(context, R.color.default_progress_text_color)
+			)
+			progressTextPaint.color = progressTextColor
+
+			val progressTextSize = getDimension(
+				R.styleable.IOSProgressBar_ipb_progress_text_size,
+				resources.getDimension(R.dimen.default_progress_text_size)
+			)
+			progressTextPaint.textSize = progressTextSize
 		}
 
 		typedArray.recycle()
@@ -263,6 +291,8 @@ class IOSProgressBar constructor(context: Context, attributeSet: AttributeSet?) 
 		}
 		onProgressChangedListener?.invoke(this, progress, maxProgress, minProgress, false)
 	}
+
+	fun getProgress() = progress
 
 	fun setOnProgressChangeListener(onProgressChangedListener: OnProgressChangedListener) {
 		this.onProgressChangedListener = onProgressChangedListener
@@ -342,8 +372,22 @@ class IOSProgressBar constructor(context: Context, attributeSet: AttributeSet?) 
 				}
 
 			}
+
+			if (showProgressText) {
+				val progressText = getProgressText()
+				progressTextPaint.getTextBounds(progressText, 0, progressText.length, progressTextBoundRect)
+				canvas.drawText(progressText, (viewWidth-progressTextBoundRect.width())/2f, getProgressTextBaseLine(), progressTextPaint)
+			}
 		}
 	}
+
+	private fun getProgressTextBaseLine(): Float{
+		val fontMetrics = progressTextPaint.fontMetrics
+		val fontHeight = fontMetrics.descent - fontMetrics.ascent
+		val baseLine = viewHeight - (viewHeight - fontHeight)/2 - fontMetrics.descent
+		return baseLine
+	}
+	private fun getProgressText() = "$progress%"
 	
 	override fun onTouchEvent(event: MotionEvent?): Boolean {
 		if (isEnabled.not()) return false
