@@ -12,11 +12,11 @@
 
 ### Sample screenshots:
 
-![ios-progress-bar-1](/Users/heyangyang/Desktop/ios-progress-bar-1.gif)
+![ios-progress-bar-1](https://github.com/hyy920109/IOSProgressBar/tree/main/screenshots/ios-progress-bar-1.gif)
 
 
 
-![ios-progrss-bar-2](/Users/heyangyang/Desktop/ios-progrss-bar-2.gif)
+![ios-progrss-bar-2](https://github.com/hyy920109/IOSProgressBar/tree/main/screenshots/ios-progrss-bar-2.gif)
 
 ### Basic usage:
 
