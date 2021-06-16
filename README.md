@@ -16,7 +16,7 @@
 
 
 
-![ios-progrss-bar-2](https://github.com/hyy920109/IOSProgressBar/tree/main/screen-shots/ios-progrss-bar-2.gif)
+![ios-progrss-bar-2](https://github.com/hyy920109/IOSProgressBar/blob/main/screen-shots/ios-progress-bar-2.gif)
 
 ### Basic usage:
 
